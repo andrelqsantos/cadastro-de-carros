@@ -25,5 +25,3 @@ CREATE TABLE Revisao(
     FOREIGN KEY(id_carro) REFERENCES Carros(id_carro)
     ON DELETE CASCADE
 );
-
-INSERT INTO Pessoas VALUES (default, 'André Queiroz', '67998625227', 'andrelqsantos@gmail.com', '1998-02-19', '1')
