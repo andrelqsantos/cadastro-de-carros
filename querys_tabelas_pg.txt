@@ -1,0 +1,29 @@
+
+CREATE TABLE Pessoas(
+	id_pessoa SERIAL CONSTRAINT pk_id_pessoa PRIMARY KEY,
+	nome VARCHAR(50) NOT NULL,
+	telefone VARCHAR(25) NOT NULL,
+    email VARCHAR(30) NOT NULL,
+    nasc DATE,
+    sexo BIT(1)
+    );
+CREATE TYPE marca AS ENUM ('chevrolet', 'citroen', 'fiat', 'ford', 'honda', 'hyundai');
+CREATE TABLE Carros(
+	id_carro SERIAL CONSTRAINT pk_id_carro PRIMARY KEY, 
+    	marca marca NOT NULL,
+	modelo VARCHAR(50) NOT NULL,
+	id_pessoa INTEGER,
+    FOREIGN KEY(id_pessoa) REFERENCES Pessoas(id_pessoa)
+    ON DELETE CASCADE
+
+);
+
+CREATE TABLE Revisao(
+	id_revisao SERIAL CONSTRAINT pk_id_revisao PRIMARY KEY, 
+    id_carro INTEGER NOT NULL,
+	data_rev DATE,
+    FOREIGN KEY(id_carro) REFERENCES Carros(id_carro)
+    ON DELETE CASCADE
+);
+
+INSERT INTO Pessoas VALUES (default, 'André Queiroz', '67998625227', 'andrelqsantos@gmail.com', '1998-02-19', '1')
